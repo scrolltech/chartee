@@ -9,6 +9,10 @@ def destroy(id):
     return Chart.delete().where(Chart.id == id).execute()
 
 
+def list_():
+    return tuple(Chart.select().dicts())
+
+
 def get(id):
     c = Chart.select().where(Chart.id == id).first()
     return c.to_dict() if c else None
