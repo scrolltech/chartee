@@ -13,7 +13,7 @@ def list_():
     return tuple(Chart.select().dicts())
 
 
-def get(id):
+def get_or_none(id):
     c = Chart.select().where(Chart.id == id).first()
     return c.to_dict() if c else None
 
