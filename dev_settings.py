@@ -1,0 +1,6 @@
+DB_NAME = 'chartee'
+DB_USER = ''
+DB_PASSWORD = ''
+DB_HOST = 'localhost'
+DB_MAXCONNECTIONS = 32
+DB_TRANSACTIONS_ENABLED = True
