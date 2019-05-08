@@ -22,14 +22,14 @@ class Chart(CommonModel):
     updated = DateTimeField(null=False, default=datetime.datetime.utcnow)
 
 
-class Spanshot(CommonModel):
+class Snapshot(CommonModel):
     chart = ForeignKeyField(Chart, null=False, default=1, db_column='chart_id')
     data = BinaryJSONField(null=False)
 
 
 class Revision(CommonModel):
     chart = ForeignKeyField(Chart, null=False, default=1, db_column='chart_id')
-    snap = ForeignKeyField(Spanshot, null=False, default=1, db_column='snap_id')
+    snap = ForeignKeyField(Snapshot, null=False, default=1, db_column='snap_id')
 
 
 the_models = BaseModel.__subclasses__() + CommonModel.__subclasses__()
