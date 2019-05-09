@@ -5,10 +5,15 @@ def create(**data):
     return Snapshot.create(**data).id
 
 
-def destroy(id):
-    return Snapshot.delete().where(Snapshot.id == id).execute()
+def list_():
+    return tuple(Snapshot.select().order_by(Snapshot.created.desc()).dicts())
 
 
 def get(id):
-    s = Snapshot.select().where(Snapshot.id == id).first()
-    return s.to_dict() if s else None
+    snapshot = Snapshot.select().where(Snapshot.id == id).first()
+    if snapshot:
+        return snapshot.to_dict()
+
+
+def destroy(id):
+    return Snapshot.delete().where(Snapshot.id == id).execute()

@@ -1,6 +1,6 @@
-import be.app.libs.chart as chartlib
+import be.app.libs.data as datalib
 
 
 def setup_routes(factory):
-	chart_handlers = (chartlib.list_, chartlib.create, None, chartlib.get_or_none, chartlib.update, chartlib.delete)
-	factory.map_resource('/chart/', handlers=chart_handlers)
+	data_handlers = (datalib.list_, datalib.create, None, datalib.get, datalib.update, datalib.destroy)
+	factory.map_resource('/chart/', handlers=data_handlers)
