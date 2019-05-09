@@ -7,4 +7,6 @@ honcho
 gunicorn
 hug
 redis
-
+apphelpers
+converge
+pytest
