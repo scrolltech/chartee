@@ -5,12 +5,12 @@ import datetime
 from be.app.libs import data as datalib
 
 
-MEDIA_DIR = os.path.abspath(
-    os.path.join(os.getcwd(), 'media')
+CHART_JSON_DIR = os.path.abspath(
+    os.path.join(os.getcwd(), 'charts')
 )
 
-if not os.path.exists(MEDIA_DIR):
-    os.mkdir(MEDIA_DIR)
+if not os.path.exists(CHART_JSON_DIR):
+    os.mkdir(CHART_JSON_DIR)
 
 
 def JSONSerializer(o):
@@ -21,8 +21,8 @@ def JSONSerializer(o):
 def publish(id):
     chart_data = datalib.get(id)
     filename = '{}.json'.format(id)
-    media_location = os.path.join(MEDIA_DIR, filename)
-    with open(media_location, 'w') as json_file:
+    chart_json_file_location = os.path.join(CHART_JSON_DIR, filename)
+    with open(chart_json_file_location, 'w') as json_file:
         json.dump(chart_data, json_file, default=JSONSerializer)
 
 
