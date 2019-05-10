@@ -31,10 +31,9 @@ def list_():
 
 
 def create_and_publish(**data):
-    resp = datalib.create(**data)
-    if data:
-        publish(data['id'])
-        return data['id']
+    id = datalib.create(**data)
+    publish(id)
+    return id
 
 
 def update_and_publish(id, mod_data):
