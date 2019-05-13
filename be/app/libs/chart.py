@@ -23,10 +23,12 @@ def JSONSerializer(o):
 def publish(id):
     chart_data = datalib.get(id)
     if chart_data['status'] in [statuses.draft.value, statuses.unpublished.value]:
-        datalib.update(id, mod_data=dict(
+        mod_data = dict(
             status=statuses.published.value,
             published=datetime.datetime.utcnow()
-        ))
+        )
+        datalib.update(id, mod_data=mod_data)
+        chart_data.update(mod_data)
     filename = '{}.json'.format(id)
     chart_json_file_location = os.path.join(CHART_JSON_DIR, filename)
     snapshotlib.create(data=json.dumps(chart_data, default=JSONSerializer))
