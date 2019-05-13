@@ -8,17 +8,16 @@ from be.app.models import Snapshot as SnapshotModel
 
 
 def get_existing_snapshot(title):
-    data = DataModel.select().where(
-                DataModel.title == title).first()
-    snapshot = SnapshotModel.select().where(
-                SnapshotModel.data_id == data.id).first()
+    snapshot = SnapshotModel.select().first()
     return snapshot
 
 
 def test_create():
-    data_3 = DataModel.select().where(
-                DataModel.title == dummy.data_3['title']).first()
-    assert snapshotlib.create(data=data_3.id, user=dummy.user_2)
+    assert snapshotlib.create(data=dummy.data_2)
+    assert snapshotlib.create(data=dummy.data_3)
+    updated_data_3 = dummy.data_3
+    updated_data_3.update(title='Updated data 3')
+    assert snapshotlib.create(data=dummy.data_3)
 
 
 def test_list_():
