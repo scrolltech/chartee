@@ -26,8 +26,7 @@ class Data(BaseModel):
 class Snapshot(BaseModel):
     created = created()
     updated = DateTimeField(null=False, default=datetime.datetime.utcnow)
-    data = ForeignKeyField(Data, null=False, default=1, db_column='data_id')
-    user = BinaryJSONField(default={})
+    data = BinaryJSONField(default={})
 
     def to_dict(self):
         return model_to_dict(self)

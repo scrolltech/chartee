@@ -3,6 +3,7 @@ import json
 import datetime
 
 from be.app.libs import data as datalib
+from be.app.libs import snapshot as snapshotlib
 
 
 CHART_JSON_DIR = os.path.abspath(
@@ -22,6 +23,7 @@ def publish(id):
     chart_data = datalib.get(id)
     filename = '{}.json'.format(id)
     chart_json_file_location = os.path.join(CHART_JSON_DIR, filename)
+    snapshotlib.create(data=chart_data)
     with open(chart_json_file_location, 'w') as json_file:
         json.dump(chart_data, json_file, default=JSONSerializer)
 
