@@ -31,7 +31,8 @@ def publish(id):
         chart_data.update(mod_data)
     filename = '{}.json'.format(id)
     chart_json_file_location = os.path.join(CHART_JSON_DIR, filename)
-    snapshotlib.create(data=json.dumps(chart_data, default=JSONSerializer))
+    snapshot_data = json.loads(json.dumps(chart_data, default=JSONSerializer))
+    snapshotlib.create(data=snapshot_data)
     with open(chart_json_file_location, 'w') as json_file:
         json.dump(chart_data, json_file, default=JSONSerializer)
 
