@@ -17,7 +17,7 @@ def test_create():
     assert snapshotlib.create(data=dummy.data_3)
     updated_data_3 = dummy.data_3
     updated_data_3.update(title='Updated data 3')
-    assert snapshotlib.create(data=dummy.data_3)
+    assert snapshotlib.create(data=updated_data_3)
 
 
 def test_list_():
