@@ -4,6 +4,7 @@ import datetime
 
 from be.app.libs import data as datalib
 from be.app.libs import snapshot as snapshotlib
+from be.app.models import statuses
 
 
 CHART_JSON_DIR = os.path.abspath(
@@ -21,11 +22,27 @@ def JSONSerializer(o):
 
 def publish(id):
     chart_data = datalib.get(id)
+    if chart_data['status'] in [statuses.draft.value, statuses.unpublished.value]:
+        datalib.update(id, mod_data=dict(
+            status=statuses.published.value,
+            published=datetime.datetime.utcnow()
+        ))
     filename = '{}.json'.format(id)
     chart_json_file_location = os.path.join(CHART_JSON_DIR, filename)
     snapshotlib.create(data=json.dumps(chart_data, default=JSONSerializer))
     with open(chart_json_file_location, 'w') as json_file:
         json.dump(chart_data, json_file, default=JSONSerializer)
+
+
+def unpublish(id):
+    filename = '{}.json'.format(id)
+    datalib.update(id, mod_data=dict(
+        status=statuses.unpublished.value,
+        unpublished=datetime.datetime.utcnow()
+    ))
+    chart_json_file_location = os.path.join(CHART_JSON_DIR, filename)
+    if os.path.exists(chart_json_file_location):
+        os.remove(chart_json_file_location)
 
 
 def list_():
