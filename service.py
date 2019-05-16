@@ -14,6 +14,12 @@ def make_app():
     api_factory = APIFactory(router)
     api_factory.setup_db_transaction(be.app.models.db)
 
+    sessiondb_conn = dict(host=settings.SESSIONSDB_HOST,
+                          port=settings.SESSIONSDB_PORT,
+                          password=settings.SESSIONSDB_PASSWD,
+                          db=settings.SESSIONSDB_NO)
+    api_factory.setup_session_db(sessiondb_conn)
+
     setup_routes(api_factory)
 
 
