@@ -1,0 +1,13 @@
+nose
+peewee
+psycopg2
+celery
+uvicorn
+honcho
+gunicorn
+hug
+redis
+apphelpers
+converge
+nose-timer
+yanc
