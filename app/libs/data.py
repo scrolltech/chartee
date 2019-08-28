@@ -1,4 +1,4 @@
-from be.app.models import Data
+from app.models import Data
 
 
 def create(**data):

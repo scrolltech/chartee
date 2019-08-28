@@ -1,10 +1,8 @@
-import pytest
+from app.libs import snapshot as snapshotlib
+from app.models import Data as DataModel
+from app.models import Snapshot as SnapshotModel
 
-import dummy
-
-from be.app.libs import snapshot as snapshotlib
-from be.app.models import Data as DataModel
-from be.app.models import Snapshot as SnapshotModel
+from tests import dummy
 
 
 def get_existing_snapshot(title):
@@ -35,4 +33,3 @@ def test_destroy():
     snapshot_3 = get_existing_snapshot(dummy.data_3['title'])
     snapshotlib.destroy(snapshot_3.id)
     assert not snapshotlib.get(snapshot_3.id)
-

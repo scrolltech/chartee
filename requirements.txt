@@ -9,4 +9,5 @@ hug
 redis
 apphelpers
 converge
-pytest
+nose-timer
+yanc

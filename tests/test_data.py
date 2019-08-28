@@ -1,9 +1,7 @@
-import pytest
+from tests import dummy
 
-import dummy
-
-from be.app.libs import data as datalib
-from be.app.models import Data as DataModel
+from app.libs import data as datalib
+from app.models import Data as DataModel
 
 
 def test_create():
@@ -36,7 +34,7 @@ def test_update():
     }
     datalib.update(data.id, mod_data=mod_data)
     updated_data = datalib.get(data.id)
-    assert mod_data['title'] == updated_data['title']    
+    assert mod_data['title'] == updated_data['title']
 
 
 def test_destroy():

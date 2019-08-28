@@ -1,5 +1,5 @@
 DB_NAME = 'chartee'
-DB_USER = ''
+DB_USER = 'scrolldev'
 DB_PASSWORD = ''
 DB_HOST = 'localhost'
 DB_MAXCONNECTIONS = 32

@@ -1,4 +1,4 @@
-from be.app.models import Snapshot
+from app.models import Snapshot
 
 
 def create(**data):

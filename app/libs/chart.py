@@ -2,9 +2,9 @@ import os
 import json
 import datetime
 
-from be.app.libs import data as datalib
-from be.app.libs import snapshot as snapshotlib
-from be.app.models import statuses
+from app.libs import data as datalib
+from app.libs import snapshot as snapshotlib
+from app.models import statuses
 
 
 CHART_JSON_DIR = os.path.abspath(

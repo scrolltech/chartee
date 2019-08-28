@@ -1,4 +1,4 @@
-import be.app.libs.chart as chartlib
+import app.libs.chart as chartlib
 
 
 def setup_routes(factory):
